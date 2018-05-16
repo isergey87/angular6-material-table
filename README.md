@@ -1,22 +1,24 @@
-# Angular4 material table (angular4+)
+# Angular6 material table (angular6+)
+
+Fork to support Angular 6
 
 This project extends `@angular/cdk` data-table, also used in `@angular/material` table.
 
 It extends `@angular/cdk/collections` DataSource in order to include a row structure, allowing row creation, inline row edition, deletion and validation.
 
-Currently supports angular 4 (v0.1.8) and angular 5 (v0.2.0).
+Currently supports angular 6 (v0.3.0).
 
 ## Installation
 
 To install the package run:
 
-`npm install angular4-material-table`
+`npm install angular6-material-table`
 
 ## Example
 
-Example of using `angular4-material-table`:
+Example of using `angular6-material-table`:
 
-![angular4-material-table](https://i.imgur.com/vncajJG.png)
+![angular6-material-table](https://i.imgur.com/vncajJG.png)
 
 ![Other example](https://i.imgur.com/5ed814s.png)
 

@@ -1,10 +1,10 @@
 export default {
   input: 'dist/index.js',
   output: {
-    file: 'dist/bundles/angular4-material-table.umd.js',
+    file: 'dist/bundles/angular6-material-table.umd.js',
     format: 'umd',
     sourcemap: false,
-    name: 'ng.angular4-material-table',
+    name: 'ng.angular6-material-table',
   },
   globals: {
     '@angular/core': 'ng.core',
