@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
 
-import { TableDataSource } from './table-data-source';
+import { TableDataSource } from './angular6-material-table-data-source';
 
 import cloneDeep from 'lodash.clonedeep';
 

@@ -9,8 +9,15 @@
     "module": "es2015",
     "moduleResolution": "node",
     "paths": {
-      "@angular/core": ["node_modules/@angular/core"],
-      "rxjs/*": ["node_modules/rxjs/*"]
+      "@angular/core": [
+        "node_modules/@angular/core"
+      ],
+      "rxjs/*": [
+        "node_modules/rxjs/*"
+      ],
+      "angular6-material-table": [
+        "dist/angular6-material-table"
+      ]
     },
     "rootDir": ".",
     "outDir": "dist",
@@ -27,6 +34,10 @@
     "index.ts"
   ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "flatModuleOutFile": "angular6-material-table.js",
+    "flatModuleId": "angular6-material-table",
+    "annotateForClosureCompiler": true
   }
 }

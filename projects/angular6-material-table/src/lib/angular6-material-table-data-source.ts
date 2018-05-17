@@ -2,9 +2,9 @@ import { DataSource } from '@angular/cdk/collections';
 
 import { BehaviorSubject ,  Subject ,  Observable } from 'rxjs';
 
-import { TableElement } from './table-element';
-import { ValidatorService } from './validator.service';
-import { DefaultValidatorService } from './default-validator.service';
+import { TableElement } from './angular6-material-table-element';
+import { ValidatorService } from './angular6-material-table-validator.service';
+import { DefaultValidatorService } from './angular6-material-table-default-validator.service';
 
 
 export class TableDataSource<T> extends DataSource<TableElement<T>> {
@@ -166,7 +166,7 @@ export class TableDataSource<T> extends DataSource<TableElement<T>> {
 
   /**
    * Checks the existance of the a new row (not yet saved).
-   * @param source 
+   * @param source
    */
   private existsNewElement(source: TableElement<T>[]): boolean {
       return !(source.length == 0 || source[this.getNewRowIndex(source)].id > -1)
@@ -175,7 +175,7 @@ export class TableDataSource<T> extends DataSource<TableElement<T>> {
   /**
    * Returns the possible index of the new row depending on the insertion type.
    * It doesn't imply that the new row is created, that must be checked.
-   * @param source 
+   * @param source
    */
   private getNewRowIndex(source): number {
     if (this.config.prependNewElements)
@@ -201,7 +201,7 @@ export class TableDataSource<T> extends DataSource<TableElement<T>> {
   /**
    * Returns the index from the row id specified.
    * It takes into account if the new row exists or not.
-   * @param id 
+   * @param id
    * @param source
    */
   private getIndexFromRowId(id: number, source: TableElement<T>[]): number {
