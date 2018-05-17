@@ -1,13 +1,22 @@
-import { FormGroup } from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 
-import { TableDataSource } from './angular6-material-table-data-source';
+import {TableDataSource} from './angular6-material-table-data-source';
 
 import cloneDeep from 'lodash.clonedeep';
 
 export class TableElement<T> {
   id: number;
   editing: boolean;
-  currentData?: T;
+  private _currentData?: T;
+  get currentData() {
+    //express hack
+    return Object.assign(this._currentData, this.validator.getRawValue());
+  }
+
+  set currentData(value) {
+    this._currentData = value;
+  }
+
   originalData: T;
   source: TableDataSource<T>;
   validator: FormGroup;
@@ -39,6 +48,11 @@ export class TableElement<T> {
       this.delete();
     else {
       this.currentData = this.originalData;
+      let formData = {};
+      for (let key in this.validator.controls) {
+        formData[key] = this.currentData[key];
+      }
+      this.validator.setValue(formData);
       this.editing = false;
       this.validator.disable();
     }

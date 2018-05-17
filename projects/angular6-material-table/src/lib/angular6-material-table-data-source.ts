@@ -1,10 +1,10 @@
-import { DataSource } from '@angular/cdk/collections';
+import {DataSource} from '@angular/cdk/collections';
 
-import { BehaviorSubject ,  Subject ,  Observable } from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
-import { TableElement } from './angular6-material-table-element';
-import { ValidatorService } from './angular6-material-table-validator.service';
-import { DefaultValidatorService } from './angular6-material-table-default-validator.service';
+import {TableElement} from './angular6-material-table-element';
+import {ValidatorService} from './angular6-material-table-validator.service';
+import {DefaultValidatorService} from './angular6-material-table-default-validator.service';
 
 
 export class TableDataSource<T> extends DataSource<TableElement<T>> {
@@ -262,7 +262,11 @@ export class TableDataSource<T> extends DataSource<TableElement<T>> {
 
       const validator = this.validatorService.getRowValidator();
       validator.disable();
-
+      let formData = {};
+      for (let key in validator.controls) {
+        formData[key] = data[key];
+      }
+      validator.setValue(formData);
       return new TableElement({
         id: this.getRowIdFromIndex(index, arrayData.length),
         editing: false,
