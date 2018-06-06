@@ -13,10 +13,6 @@ export class TableElement<T> {
     return Object.assign(this._currentData, this.validator.getRawValue());
   }
 
-  set currentData(value) {
-    this._currentData = value;
-  }
-
   originalData: T;
   source: TableDataSource<T>;
   validator: FormGroup;
@@ -47,10 +43,9 @@ export class TableElement<T> {
     if (this.id == -1 || !this.editing)
       this.delete();
     else {
-      this.currentData = this.originalData;
       let formData = {};
       for (let key in this.validator.controls) {
-        formData[key] = this.currentData[key];
+        formData[key] = this.originalData[key];
       }
       this.validator.setValue(formData);
       this.editing = false;

@@ -2,6 +2,8 @@
 
 Fork to support Angular 6
 
+https://github.com/angular/angular-cli/wiki/stories-create-library
+
 This project extends `@angular/cdk` data-table, also used in `@angular/material` table.
 
 It extends `@angular/cdk/collections` DataSource in order to include a row structure, allowing row creation, inline row edition, deletion and validation.
