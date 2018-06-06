@@ -8,17 +8,40 @@ export class TableElement<T> {
   id: number;
   editing: boolean;
   private _currentData?: T;
-  get currentData() {
-    //express hack
-    return Object.assign(this._currentData, this.validator.getRawValue());
-  }
-
   originalData: T;
   source: TableDataSource<T>;
   validator: FormGroup;
+  get currentData() {
+    //express hack
+    if (this.validator) {
+      return Object.assign(this._currentData, this.validator.getRawValue());
+    } else {
+      return this._currentData;
+    }
+  }
+
+  set currentData(value) {
+    this._currentData = value;
+    this.fillValidatorFromData();
+  }
 
   constructor(init: Partial<TableElement<T>>) {
     Object.assign(this, init);
+    this.fillValidatorFromData();
+    if (this.validator) {
+      this.validator.disable();
+    }
+
+  }
+
+  fillValidatorFromData(): void {
+    if (this.validator) {
+      let formData = {};
+      for (let key in this.validator.controls) {
+        formData[key] = this._currentData[key];
+      }
+      this.validator.setValue(formData);
+    }
   }
 
   delete(): void {
@@ -43,11 +66,7 @@ export class TableElement<T> {
     if (this.id == -1 || !this.editing)
       this.delete();
     else {
-      let formData = {};
-      for (let key in this.validator.controls) {
-        formData[key] = this.originalData[key];
-      }
-      this.validator.setValue(formData);
+      this.currentData = this.originalData;
       this.editing = false;
       this.validator.disable();
     }

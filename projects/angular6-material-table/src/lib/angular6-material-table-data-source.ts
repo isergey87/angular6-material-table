@@ -259,20 +259,12 @@ export class TableDataSource<T> extends DataSource<TableElement<T>> {
    */
   private getRowsFromData(arrayData: T[]): TableElement<T>[] {
     return arrayData.map<TableElement<T>>((data, index) => {
-
-      const validator = this.validatorService.getRowValidator();
-      validator.disable();
-      let formData = {};
-      for (let key in validator.controls) {
-        formData[key] = data[key];
-      }
-      validator.setValue(formData);
       return new TableElement({
         id: this.getRowIdFromIndex(index, arrayData.length),
         editing: false,
         currentData: data,
         source: this,
-        validator: validator,
+        validator: this.validatorService.getRowValidator(),
       })
     });
   }
