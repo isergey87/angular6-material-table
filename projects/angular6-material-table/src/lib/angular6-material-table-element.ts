@@ -29,9 +29,12 @@ export class TableElement<T> {
     Object.assign(this, init);
     this.fillValidatorFromData();
     if (this.validator) {
-      this.validator.disable();
+      if (this.editing) {
+        this.validator.enable();
+      } else {
+        this.validator.disable();
+      }
     }
-
   }
 
   fillValidatorFromData(): void {
