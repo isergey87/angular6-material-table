@@ -1,8 +1,17 @@
 # Angular6 material table (angular6+)
 
-Fork to support Angular 6
+Fork to support Angular 7
 
-https://github.com/angular/angular-cli/wiki/stories-create-library
+https://angular.io/guide/creating-libraries
+
+##Publishing your library
+To publish your library follow these steps:
+
+`ng build my-lib`
+
+`cd dist/my-lib`
+
+`npm publish`
 
 This project extends `@angular/cdk` data-table, also used in `@angular/material` table.
 

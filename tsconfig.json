@@ -17,6 +17,12 @@
       ],
       "angular6-material-table": [
         "dist/angular6-material-table"
+      ],
+      "angular6-material-table2": [
+        "dist/angular6-material-table2"
+      ],
+      "angular6-material-table2/*": [
+        "dist/angular6-material-table2/*"
       ]
     },
     "rootDir": ".",
